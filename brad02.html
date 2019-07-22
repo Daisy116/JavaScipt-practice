@@ -1,0 +1,19 @@
+<script>
+    function doCall(){
+        let x = document.getElementById('x').value;
+        let y = document.getElementById('y').value;
+        //let z = x+y;       //結果是字串相加
+        //alert(typeof(x));    //x和y都是字串
+        let z = parseInt(x) + parseInt(y);
+        //alert(z);
+
+        document.getElementById('result').innerHTML = z;
+
+    }
+</script>
+
+<input type="number" id="x">
++
+<input type="number" id="y">
+<input type="button" value="=" onclick="doCall()">
+<span id="result"></span>
