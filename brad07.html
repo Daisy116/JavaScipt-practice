@@ -1,0 +1,39 @@
+<script>
+let a = 123;
+document.write(typeof(a) + "<br>");
+a = String(a);
+document.write(typeof(a) + ":" + a + "<br>" + "<hr>");
+
+let b = false;
+document.write(typeof(b) + "<br>");
+b = String(b);
+document.write(typeof(b) + ":" + b + "<br>" + "<hr>");
+
+let c = true;
+document.write(typeof(c) + "<br>");
+b = Number(b);
+document.write(typeof(b) + ":" + b + "<br>" + "<hr>");
+</script>
+
+
+<script>
+document.write("switch case<br>");
+let aa = 10,bb = 8;
+switch(aa){    //從上面的case先比對，如果前面有符合，不會再看後面的case
+    case 1:
+        document.write("A<br>");
+        break;
+    case 10:  //case '10':就比對不上，因為aa是數字，而不是字串
+                  //case bb + 2:可以!!
+        document.write("B<br>");
+        break;
+    case 100:
+        document.write("C<br>");
+        break;
+    default:   //不一定要擺最後，可以擺前面
+        document.write("Z<br>");
+        break;
+}
+document.write("END<hr>");
+
+</script>

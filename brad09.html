@@ -1,0 +1,70 @@
+<!-- <script>
+    let i = 1;
+    for( ;i<=10;i++){
+        if(i % 2 ==0){
+            continue;
+        }
+        if(i == 7){
+            break;
+        }        
+        document.write(i + "<br>")
+
+    }
+</script>
+
+
+<script>
+let p1,p2,p3,p4,p5,p6;
+p1 = p2 = p3 = p4 = p5 = p6 = 0; 
+for(let i = 1;i<=100;i++){
+    let dice = parseInt(Math.random()*6 + 1);
+    switch(dice){
+        case 1:
+            p1 ++;
+            break;
+        case 2:
+            p2 ++;
+            break;
+        case 3:
+            p3 ++;
+            break;
+        case 4:
+            p4 ++;
+            break;
+        case 5:
+            p5 ++;
+            break;
+        case 6:
+            p6 ++;
+            break;
+    }
+    
+}
+document.write("骰子共擲"+parseInt(p1+p2+p3+ p4+ p5+ p6)+"次"+"<br>");
+document.write(`1點出現${p1}次<br>`);
+document.write(`2點出現${p2}次<br>`);
+document.write(`3點出現${p3}次<br>`);
+document.write(`4點出現${p4}次<br>`);
+document.write(`5點出現${p5}次<br>`);
+document.write(`6點出現${p6}次<br>`);
+</script>
+
+<script>
+let p = [];
+document.write("<hr>" + typeof(p) + "<br>");
+p[0] = 123;
+p[1] = 'Brad';
+p[4] = true;
+document.write(p.length);
+</script> -->
+
+<script>
+let p = [0,0,0,0,0,0];
+for(let h=0; h<10000000;h++){
+    let rand =parseInt(Math.random()*6);
+    p[rand]++;
+}
+for(let q=0;q<p.length;q++){
+    document.write(`${q+1}點出現${p[q]}次<br>`);
+}
+</script>

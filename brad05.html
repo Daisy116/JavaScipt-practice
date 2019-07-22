@@ -1,0 +1,40 @@
+<script>
+        function doCall(){
+            let op =document.getElementById("op");
+            console.log(op.value);    //在網頁的開發人員可以看到
+
+
+            let x = document.getElementById('x').value;
+            let y = document.getElementById('y').value;
+            let z;
+            //let z = x+y;       //結果是字串相加
+            //alert(typeof(x));    //x和y都是字串
+            if(op.value == "+"){
+                z = parseInt(x) + parseInt(y);
+                // z = parseInt(x + y);
+                document.getElementById('result').innerHTML = z;
+            }else if(op.value == "-"){
+                z = parseInt(x) - parseInt(y);
+                document.getElementById('result').innerHTML = z;
+            }else if(op.value == "x"){
+                z = parseInt(x) * parseInt(y);
+                document.getElementById('result').innerHTML = z;
+            }else if(op.value == "/"){
+                z1 = parseInt(parseInt(x) / parseInt(y));
+                // z = parseInt(x) - z1 * parseInt(y);
+                z = parseInt(x) % parseInt(y);
+                document.getElementById('result').innerHTML = z1 + "餘" +z;
+            }
+        }
+    </script>
+    
+    <input type="number" id="x">
+    <select id="op">
+        <option>+</option>
+        <option>-</option>
+        <option>x</option>
+        <option>/</option>
+    </select>
+    <input type="number" id="y">
+    <input type="button" value="=" onclick="doCall()">
+    <span id="result"></span>

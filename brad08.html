@@ -1,0 +1,35 @@
+<script>
+let month = parseInt(Math.random()*12 + 1);   //亂數產生1~12月
+document.write(`${month}月`);
+switch(month){
+    case 1: case 3:case 5:case 7:     //因為break敘述句可省略，所以寫成or||的判斷
+    case 8: case 10: case 12:
+        document.write("有31天" + "<hr>");
+        break;
+    case 2:
+        document.write("有28天" + "<hr>");
+        break;
+    case 4: case 6:case 9:case 10:  
+        document.write("有30天" + "<hr>"); 
+        break;  
+    default:
+        document.write("有0天" + "<hr>");
+        break;
+}
+</script>
+
+
+<script>
+//for迴圈可執行這兩段函式
+function init(){
+    document.write("HELLO Brad<br>");
+}
+function drawLine(){
+    document.write("<hr>");
+}
+let i = 0;
+for(init();i < 10;drawLine()){   //進迴圈，先做一次初始化(i = 0改成init())，做一次迴圈必做for中的第三個(i++改成drawLine也可以)
+    document.write(i++ + "<br>");
+}
+
+</script>

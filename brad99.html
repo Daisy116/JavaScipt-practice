@@ -1,0 +1,37 @@
+<script>
+    //自己改table的border成css格式
+    function ninenine(){
+        const ROW = 4;   //看要幾排99乘法表，不需要動下面的數字
+        const STAR = 2;  //從2開始數
+        const COL = 4;
+
+
+        for(let k = 0;k<ROW;k++){    
+            document.write("<tr>");
+            for(let j = STAR;j < STAR + COL;j++){
+                let newj = j + k * COL;  //因為一排有4個，所以j+4，注意k從0開始!!
+
+                let isPink;
+                if (COL % 2 == 0){
+                    isPink = (newj + k) % 2 == 0;
+                }else{
+                    isPink = newj % 2 == 0;
+                }
+                document.write("<td bgcolor='" + (isPink?"pink":"yellow") + "'>")
+                for(let i = 1;i < 10;i++){  
+                    let r = i*newj;
+                    document.write(`${newj}  x  ${i} = ${r} <br>`);
+                }
+            document.write("</td>");
+        }
+        document.write("</tr>");
+        }
+        
+}
+</script>
+<table border="1" width="100%">  
+        <script>
+            ninenine();
+        </script>            
+    
+</table>

@@ -1,0 +1,19 @@
+<script>
+    let a = '31',b = '30';     //字串是第一個字和第一個字比，所以'10'<'3'
+    let c = 'andy',d = 'Cindy';   //英文字母B>A，小寫大於大寫字母，因為a :97 ; A:65(ASCII code)
+    if(c>d){
+        document.write("OK");
+    }else{
+        document.write("X");
+    }
+</script>
+<hr>
+<script>
+    let n1 = 10,n2 = 3;
+    if(n1++ >=10 || n2++ <=3){ //++和--因為寫在數字後，所以判斷完才進行加減的動作
+                               //or || 如果前面判斷已經為TRUE，則不會做後面的判斷，所以後面不會做n2++
+        document.write(`OK : a = ${n1}; b = ${n2}`)
+    }else{
+        document.write(`X : a = ${n1}; b = ${n2}`)
+    }
+</script>

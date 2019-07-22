@@ -1,15 +1,43 @@
 <script>
-    let year = 2019;
-    //老師的版本
-    if(year % 4 == 0){
-        if(year % 100 == 0){
-            if(year % 400 == 0){
-                document.write("是閏年");
-            }else{
-                document.write("不是閏年");//28
+    
+        //let year = 2019;
+        //自己的版本
+        // if(year % 4 == 0){
+        //     if(year % 400 == 0){
+        //         if(year % 100 != 0){
+        //             document.write("是閏年!")  //2月28天
+        //         }    
+        //     }else {
+        //         document.write("不是閏年!")  //2月29天
+        //     }
+        // }else{
+        //     document.write("不是閏年!")  //2月29天
+        // }
+    
+        //老師的版本
+        function doit(){
+            let st = "";
+            let year = parseInt(document.getElementById('year').value);
+            //document.write(typeof(year));
+            if(year % 4 == 0){
+                if(year % 100 == 0){
+                    if(year % 400 == 0){
+                        // document.getElementById('result').innerHTML = "是閏年"
+                        st = "是閏年";
+                    }else{
+                        st = "不是閏年";//28
+                    }
+                }else{
+                    st = "不是閏年";//28
             }
-        }else{
-            document.write("不是閏年");//28
         }
-    }
+        document.write(st);
+        document.getElementById('result').innerHTML = st;
+        }
+    
 </script>
+
+
+Year :<input type="number" id="year">
+<input type="button" value="是否閏年" onclick="doit()">
+<span id="result"></span>
