@@ -1,0 +1,58 @@
+<script>
+//學習function
+
+function sayYa(){
+    document.write("Ya!" + "<br>");
+}
+
+function sayYa2(name = 'CY'){            //'CY'是預設值，當沒寫參數時用預設值
+    document.write(`Ya! ${name} <br>`);  //用${}來傳遞參數
+}
+
+function sayYa3(n1,n2){     
+    document.write(`Ya! ${n1} and ${n2} <br>`);  //用${}來傳遞參數
+}
+
+function sayYa4(names){                 //參數傳陣列!
+    if(names instanceof Array){
+        for(let name of names){
+            document.write(`Ya! ${name} <br>`);
+        }
+    }
+}
+
+function sayYa5(...names){             //不定個數的參數傳遞，三個點加上參數名
+    document.write(typeof names + "  " + Array.isArray(names) + "<br>");
+    for(let name of names){
+        document.write(`Ya! ${name} <br>`);
+    }
+}
+
+sayYa();
+sayYa2('Brad');
+sayYa2();
+sayYa3('World','III');
+
+document.write(`<hr>  用陣列sayHello  <br>`);
+sayYa4(['World','III','asd','zxc','qwe','hihihi']);
+
+document.write(`<hr>  沒有傳參數  <br>`);
+sayYa5();
+
+document.write(`<hr>  傳一個參數  <br>`);
+sayYa5('Brad');
+
+document.write(`<hr>  傳多個參數  <br>`);
+sayYa5('World','III','asd','zxc','qwe','hihihi');
+
+
+document.write(`<hr> function(x , y)<br>`);
+
+let fxy = function(x , y){   //用變數來處理function
+    return 2*x + y;
+};
+document.write(fxy(10,3) + "<br>");
+
+let newf = fxy;   //把fxy函式指定給newf
+document.write(newf(3,4) + "<br>");
+</script>

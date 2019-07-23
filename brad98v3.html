@@ -1,0 +1,61 @@
+<script>
+    //用陣列寫撲克牌的洗牌、發牌、整理牌
+    let poker = [];
+    for(let i = 0;i<52;i++){    //i<10看得比較清楚
+        poker[i] = i;   //假設撲克牌一開始按照順序排好了
+    }
+
+    for(let i = poker.length-1; i>0; i--){   //i從51開始，從後面的牌開始交換(洗牌)
+        let rand = parseInt(Math.random()*(i+1));  //隨便取撲克牌陣列的index
+        // let temp;  //將poker[i]和poker[rand]的值交換
+        // temp = poker[rand];
+        // poker[rand] = poker[i];
+        // poker[i] = temp;
+        [poker[i],poker[rand]] = [poker[rand],poker[i]];
+        
+    }
+    for(let i in poker){
+            // document.write(poker[i] + "<br>");
+    }
+
+    // document.write("<hr>");
+
+    //有四個玩家，並把洗好的牌發到四個人手上
+    let players = [[],[],[],[]];
+    for(let i =0; i<poker.length; i++){
+        players[i%4].push(poker[i]);
+    }
+
+    // //驗證看看
+    // document.write("看player1拿到的牌 :" + "<br>");
+    // for(let h in players[0]){
+    //         document.write(players[0][h] + "<br>");
+    // }
+</script>
+
+<table border="1" style="border-collapse: collapse" width="100%">
+    <script>
+        let suits = ['&spades;','&hearts;','&diams;','&clubs;'];  //宣告花色的陣列
+        let nums = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];  //宣告撲克牌數字的陣列
+
+        for(let player of players){    //player值代表players[0~3]，有4個player
+            //整理牌
+            player.sort(function(a,b){return a-b;})  //function(a,b){return a-b;}代表比數值大小，a-b如果為正值，則a>b，負值反之
+            // player.sort(function(a,b){return b-a;})  //b-a會從小排到大
+
+            document.write("<tr>");
+
+            for(let card of player){   //card值代表players[0~3][0~51]，代表某個player拿到的牌
+                if(parseInt(card/13) == 1 || parseInt(card/13) == 2){
+                    document.write("<td style='color:red'>")   //黑桃和菱形用紅色的
+                }else{
+                    document.write("<td style='color:black'>")
+                }
+
+                document.write(suits[parseInt(card/13)] + nums[card%13]);  //記得(除以13)要加parseInt!
+                document.write("</td>");
+            }
+            document.write("</tr>");
+        }       
+    </script>
+</table>

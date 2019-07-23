@@ -1,0 +1,33 @@
+<!--簡單用html表現撲克牌花色-->
+&spades;<br> <!-- 黑桃 -->
+<font color='red'>&hearts;</font><br>  <!-- 紅心 -->
+&diams;<br>  <!-- 菱形 -->
+&clubs;<br>  <!-- 梅花 -->
+
+<hr>
+
+<script>
+let a = 1;
+
+while(a<10){
+    document.write(a++ + "<br>");
+}
+</script>
+
+<hr>
+
+
+<script>
+    function sum(n){
+        let t = parseInt(document.getElementById("num").value);
+        let i = 1, sum = 0;
+        while(i<t){
+            sum += i++;
+        }
+        document.getElementById('result').innerHTML = sum;
+    }
+</script>
+1 + 2 + 3 + ... + 
+<input type="number" id="num">
+<input type="button" value="=" onclick="sum()">
+<span id="result"></span>

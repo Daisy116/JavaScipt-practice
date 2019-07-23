@@ -1,0 +1,35 @@
+<!-- <script>
+//數值做交換的特性
+let a = 10, b = 3;
+a = a + b;   //a = 13
+b = a - b;   //b = 10
+a = a - b;   //a = 3
+document.write(`a = ${a}; b = ${b}`);
+
+document.write("<hr>");
+//也可用陣列交換，比較方便
+let c = 4;
+a = 10, b = 3
+[a,b,c] = [c,a,b];
+document.write(`a = ${a}; b = ${b}; c = ${c}`);
+</script> -->
+
+<script>
+let a = ['Brad',2,3,'CY',5,'III'];
+a[8] = 'OK';
+
+for(let i = 0; i<a.length ; i++){
+    document.write(a[i] + "  ");
+}
+document.write("<hr>");
+
+for(let i in a){             //會跳過undefined的元素!
+    document.write(a[i] + "  ");
+}
+document.write("<hr>");
+
+for(let i of a){               //用of的話，i就代表a[i]的值!!但會跑每個元素
+    document.write(i + "  ");
+}
+document.write("<hr>");
+</script>
