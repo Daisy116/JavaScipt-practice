@@ -58,13 +58,28 @@ p[4] = true;
 document.write(p.length);
 </script> -->
 
-<script>
-let p = [0,0,0,0,0,0];
-for(let h=0; h<10000000;h++){
-    let rand =parseInt(Math.random()*6);
+
+<!-- <script>  //自己的版本
+let p = [0,0,0,0,0,0,0,0,0];   //作弊的骰子，其實是產生0~8的亂數
+for(let h=0; h<1000000;h++){
+    let rand =parseInt(Math.random()*9);
     p[rand]++;
 }
-for(let q=0;q<p.length;q++){
+p[3] = p[3] + p[6]
+p[4] = p[4] + p[7]
+p[5] = p[5] + p[8]
+for(let q=0;q<(p.length-3);q++){
     document.write(`${q+1}點出現${p[q]}次<br>`);
 }
-</script>
+</script> -->
+
+<script>  //老師的版本
+    let p = [0,0,0,0,0,0];   //骰子還是六點
+    for(let h=0; h<1000000;h++){
+        let rand =parseInt(Math.random()*9);   //作弊的骰子，其實是產生0~8的亂數
+        p[rand>=6?rand-3:rand]++;   //大於6的點數，加到4~6點中
+    }
+    for(let q=0;q<(p.length);q++){
+        document.write(`${q+1}點出現${p[q]}次<br>`);
+    }
+    </script>

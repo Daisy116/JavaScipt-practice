@@ -1,0 +1,37 @@
+<script>
+    let a = [];
+    a[0] = [];
+    document.write("a = [] 是不是陣列 :" + (a instanceof Array));
+    document.write("<br>");
+    document.write("a[0] = [] 是不是陣列 :" +(a[0] instanceof Array));
+    document.write("<br>");
+
+    a[1] = [];
+    a[0][0] = 123;
+    a[0][1] = 100;
+    a[1][0] = 12;
+    a[2] = 34;
+
+    document.write("<hr>");
+
+    for(let i in a){    //尋訪多維陣列，但a[2]不是Array
+        if(a[i] instanceof Array){  //所以加if判斷出a[2]
+            for(let j in a[i]){
+                document.write(a[i][j] + "  ");
+            }
+        }else{
+            document.write(a[i]);   //a[2]可以在這裡印出
+        }
+        document.write("<br>");
+    }
+
+    document.write("<hr>");
+
+    let aa = 1;
+    do{
+        aa++;
+        document.write(aa + "<br>");
+    }while(aa<10);
+    document.write("aa最終值 :" + aa);
+    document.write("<hr>");
+</script>

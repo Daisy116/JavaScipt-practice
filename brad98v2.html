@@ -1,0 +1,29 @@
+<script>
+        //寫出撲克牌洗牌、發牌給四個玩家、整理牌(小到大)、攤牌(把玩家的牌show出)
+        
+            let poker = [];
+            let i = 0;
+            
+            do{
+                let rand = parseInt(Math.random()*52);  //撲克牌52張，亂數產生0~51
+        
+                //在input進陣列之前，要有檢查機制，防止發到重複的牌
+                let isRepeat = false;
+                for(let j = 0;j < i;j++){
+                    if(rand == poker[j]){
+                        isRepeat = true;  //有重複的牌
+                        break;  
+                    }
+                }
+                if(!isRepeat){  //如果沒有重複
+                    poker[i] = rand;  //input進陣
+                }else{   //如果重複了，讓迴圈多做幾次
+                    i--;
+                }    
+                i++;
+            }while(i<52);
+        
+            for(let i in poker){
+                document.write(poker[i] + "<br>");
+            }
+        </script>

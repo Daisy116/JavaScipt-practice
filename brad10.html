@@ -1,0 +1,39 @@
+<script>
+    //instanceof 是否為物件實體
+    let a = [];
+    document.write(a instanceof Array);  //a是否為陣列的物件實體
+    document.write("<hr>");
+    a.push(1);  a.push(12);  a.push(123);  //加元素進陣列中，用push
+    //push會從index沒值的數字開始，index從0開始
+    a[7] = 2000;
+
+    for(let i = 0;i < a.length; i++){    //用迴圈尋訪整個陣列
+        document.write(a[i] + "<br>");
+    }
+    document.write("<hr>");
+    for(let j in a){    //用這種迴圈方式，會跳過中間沒定義的數字!!好用
+        document.write(a[j] + "<br>");
+    }
+
+    document.write("<hr>");
+
+    let b = new Array(7);
+    let c = new Array(1,2,3,4);
+    document.write(b.length+ "<br>");  //b是產生7個元素
+    document.write(c.length+ "<br>");  //c是產生4個元素
+
+    document.write("<hr>");
+    document.write("<hr>");
+    document.write("<hr>");
+
+    document.write(a.toString() + "<br>");  //變成逗號隔開
+    document.write("pop 出" + a.pop() + "<br>");  //印出被pop拿出的數字(Array最後的數)
+    //pop不只拿掉一個元素，還讓陣列少一個位置
+    //而delete只拿掉一個元素，該位置變成undefined!!，不會少一個位置
+    for(let j in a){   
+        document.write(a[j] + "<br>");
+    }
+
+
+    //Array不等於數學上的矩陣!要用一維的概念看多維的陣列
+</script>
