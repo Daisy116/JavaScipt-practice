@@ -1,0 +1,29 @@
+<script src="brad16.js"></script>
+<!-- <script>
+//身份證字號檢查:總長度為十，開頭英文字母，第二個字母為1,2，後7碼皆為數字
+    let id = 'M140051653';  
+    if(checkTWID(id)){
+        document.write('OK');
+    }else{
+        document.write('XX');
+    }
+</script> -->
+
+<script>
+    //當滑鼠點其他地方(失焦時)，馬上做檢查
+    function checkID(){
+        var mesg = document.getElementById('mesg');
+        var id = document.getElementById('id').value;
+        mesg.innerHTML = checkTWID(id)?'':"error";
+    }
+</script>
+
+<hr>
+
+<form>
+    Name: <input type="text" /><br>
+    ID: <input type="text" onblur="checkID()" id='id'/>
+    <span id="mesg"></span><br>
+    Gender: <input type="radio" name="gender" checked/>Male
+    <input type="radio" name="gender" />Female
+</form>
