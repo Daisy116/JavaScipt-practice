@@ -1,0 +1,37 @@
+<!-- 時間頻率，週期的執行，做出計時器 -->
+<script>
+    let counter = 0;
+    let timer = null;
+    let isRunning = false;
+
+    function start(){
+        if(isRunning) return;  //如果有按過satrt，就不可以再按
+        isRunning = true;
+        timer = setInterval(doThing,1*1000);  //如果一直按按鈕，會有多個週期進行
+    }
+
+    function doThing(){
+        document.getElementById('counter').innerHTML = ++counter;
+    }
+
+    function pause(){     
+        if(timer == null){        
+            clearInterval(timer);     //將週期任務結束
+        }
+        isRunning = false;
+    }
+
+    function zero(){
+        if(timer != null){
+            clearInterval(timer);
+        }
+        counter = 0;
+        document.getElementById('counter').innerHTML = counter;
+        isRunning = false;
+    }
+</script>
+Timer: <span id='counter'>0</span>
+<hr>
+<input type="button" value="Start" onclick="start()" />
+<input type="button" value="Pause" onclick="pause()" />
+<input type="button" value="Zero" onclick="zero()" />

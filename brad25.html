@@ -1,0 +1,24 @@
+<script>
+    //物件和物件之間，屬性的差異最重要，因為方法大家可以互用
+
+
+    let person = {   //宣告物件1
+        name : 'Brad',
+        age : 18,
+        getInfo : function(){
+            return this.name + ":" + this.age;
+        }
+    };
+
+    let peter = {   //宣告物件2
+        name : 'Peter',
+        age : 20
+    };   
+    let tony = {   //宣告物件3
+        name : 'Tony',
+        age : 30
+    };   
+
+    document.write(person.getInfo.call(tony));  //用person的方法去呼叫tony的屬性，
+                                                //要加.call()，不然會呼叫到person自己的屬性
+</script>

@@ -1,0 +1,34 @@
+<!-- 陣列和物件的某些地方一樣 
+    JSON vs. csv : 前一個有key<->value;後面只有value!  -->
+<script>
+    let a = [];  //宣告一個陣列
+    a['name'] = 'Brad';   //陣列也可以這樣存值，這算文字的index
+    a['age'] = 18;
+    document.write(a['name'] + " : " + a['age'] + "<hr>");
+    a.push(123);  //會push在數字index的後面!
+    a.push(12.3);
+    a.push('CY');
+
+    for(let key in a){
+        document.write(key + " : " + a[key] + "<br>");
+    }
+    document.write("<hr>");
+
+    a['eat'] = function(){  //陣列也可以存方法!!
+        document.write(this.name + " is eating.<hr>");
+    }
+    a.eat();  //呼叫陣列的方法
+</script>
+
+<script>
+    //補充用法
+    function test1(){
+        let x = 123;
+        let y = 12.3;
+        let z = 'Brad';
+        return [x, y, z];   //可以return一組陣列
+    }
+
+    let [d, b, c] = test1();  //用[d, b, c]來接收陣列
+    document.write(d + " : " + b + " : " + c);
+</script>

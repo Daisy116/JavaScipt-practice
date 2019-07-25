@@ -1,0 +1,68 @@
+<!-- 用javascript的canvas畫布來處理動畫，圖會動，或可以讓使用者畫圖 -->
+<!-- 定義網頁所需的function，才將javascript寫在html上面
+    ，而一般javascript都寫在下面 -->
+
+<h1 id="head"></h1>
+<input type="button" value="clear" onclick="clearCanvas()" />
+<input type="button" value="<<" onclick="moveLeft()" />
+<input type="button" value=">>" onclick="moveRight()" />
+<hr>
+<canvas id="canvas" width="480" height="320"
+    style="border: 1px solid black"></canvas>
+
+<script>
+    head.innerHTML = "CY Company";
+
+    //開始要在畫布中作畫
+    let ctx = canvas.getContext('2d');  //2d為渲染
+    let isDrag;
+    let x0,y0,x1,y1;
+
+    ctx.strokeStyle = 'rgb(0,0,255)';  //設定畫筆顏色
+    
+
+    
+    //canvas物件中，其實早就有這些function，只是沒設listner
+    canvas.onmousedown = function(e){  //設定事件(listner)，當滑鼠點下去畫布時才會做
+        console.log('down');
+        isDrag = true;
+        ctx.beginPath();  //畫筆的開始點
+        ctx.moveTo(e.offsetX,e.offsetY);  //設定畫筆的開始點
+    }
+    canvas.onmouseup = function(e){   //設定事件(listner)，當滑鼠點完畫布時才會做
+        console.log('up');
+        isDrag = false;
+        x1 = e.offsetX;
+        y1 = e.offsetY;
+    }
+    canvas.onmousemove = function(e){  //e代表事件，e會帶有滑鼠的位置資訊
+        if(!isDrag) return;
+        console.log('drag' + e.offsetX + " x " + e.offsetY);  //offset偏移值，和畫布CANVAS相比的位置
+        ctx.lineTo(e.offsetX,e.offsetY);  //畫筆的結束點，lineTo可以畫多邊形
+        ctx.stroke();     //開始畫出一條線
+    }
+
+    let ball = new Image();
+    let ballx = 100;
+    ball.src = 'ball.jpg';
+    ball.onload = function(){
+        ctx.drawImage(ball, ballx, 50); //將圖片呈現出，在x,y座標上
+    }
+
+    function clearCanvas(){    //清空畫布
+        ctx.clearRect(0, 0, 480, 320);
+    }
+
+    function moveLeft(){
+        clearCanvas();
+        ballx -= 10;
+        ctx.drawImage(ball, ballx, 50);
+    }
+
+    function moveRight(){
+        clearCanvas();
+        ballx += 10;
+        ctx.drawImage(ball, ballx, 50);
+
+    }
+</script>

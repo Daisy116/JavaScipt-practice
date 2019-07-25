@@ -1,0 +1,34 @@
+<style>
+    #mytext {
+        text-align: left;   /* 讓文字靠左/右/中邊 */
+    }
+</style>
+<script>
+    function changeAlign(){
+        let mytext = document.getElementById('mytext');
+        // let style = mytext.style['textAlign'] = 'center';
+        mytext.style['textAlign'] = textAlign2.value;
+
+        // console.log(typeof(mytext));   //檢查出mytext是物件
+        // for(let key in mytext.style){
+        //     console.log(key + " : " + mytext.style[key]);  
+        //     //mytext的style也是物件!尋訪看看style內含什麼屬性
+        //     //發現其中有textAlign屬性
+        // }
+
+        // console.log(typeof(textAlign));   //檢查出mytext是物件
+        // for(let key in textAlign){
+        //     console.log(key + " : " + textAlign[key]);  
+        //     //mytext的style也是物件!尋訪看看style內含什麼屬性
+        //     //發現其中有textAlign屬性
+        // }
+    }
+</script>
+
+<select onchange="changeAlign()" id="textAlign2">  <!-- onchange，當改變選項時會立即做... -->
+    <option value="left">Left</option>
+    <option value="center">Centert</option>
+    <option value="right">Right</option>
+</select>
+<hr>
+<div id="mytext">Hello, World</div>

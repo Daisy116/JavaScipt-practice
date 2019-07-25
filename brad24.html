@@ -1,0 +1,17 @@
+<!-- ... -->
+<!-- 有上面的註解，就無法執行body.appendChild()，因為沒產生body!!-->
+
+<script>
+    let body = document.body;
+    if(body == null){    //只要有任何輸出，就算是有body，不一定要加<body>
+        console.log('is null');   //前面什麼都沒有時
+    }else{
+        console.log('not null');  //在前面有任何東西，都算not null
+    }
+    let hr = document.createElement('hr');
+    body.appendChild(hr);
+</script>
+
+<body>
+    <h1>Brad Big Company</h1>
+</body>

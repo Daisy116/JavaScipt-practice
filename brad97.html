@@ -1,0 +1,49 @@
+<!-- 星期五作業1:猜數字遊戲，可選猜3,4,5位數
+    要檢查使用者的三位數，不可輸入相同的數字-->
+<!-- 星期五作業2: 麻仔台(用表格放圖、欄位合併，圖片自選;
+            用background亮度跳燈，用頻率(時間控制)控制跳燈速度) 
+        https://www.cnblogs.com/xiaohuochai/p/5973556.html  -->
+
+<!-- 看: https://blog.csdn.net/Searchin_R/article/details/82808201
+    https://www.itread01.com/content/1541705785.html
+    https://www.cnblogs.com/xiaohuochai/p/5973556.html
+查: vue.js
+用創用cc的圖，沒有版權問題 https://search.creativecommons.org/ -->
+
+<h1>Guess Number Game</h1>
+<hr>
+<input type="number" id="input"/>
+<input type="button" value="Guess" onclick="doGuess()" />
+<input type="button" value="replay" onclick="replay()" />
+
+<select id="guslength" onchange="changeLength()">
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+
+<hr>
+
+<!-- 記錄猜過的數字 -->
+<div id="log"></div>
+
+
+<script src="brad97.js"></script>
+<script>
+    let guslength = 3;
+    function changeLength(){
+        let op = document.getElementById("guslength");
+        if(op.value == "3"){
+            guslength = 3;
+        }else if(op.value == "4"){
+            guslength = 4;
+        }else if(op.value == "5"){
+            guslength = 5;     
+        }
+        document.write(guslength);
+    }
+
+
+    let answer = createAnswer(guslength);
+    console.log(answer);
+</script>

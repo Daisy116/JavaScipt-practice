@@ -1,0 +1,40 @@
+<!-- 用JavaScript寫網頁(仿造html的格式) 
+    能夠動態的產生網頁程式-->
+<script>
+    let body = document.createElement('body');  //創造一個元素:body
+    document.body = body;  //將系統預設的body為自己新創出來的 
+
+    let header = document.createElement('h1');
+    let h1text = document.createTextNode("CY Big Company"); //創造文字節點
+    header.appendChild(h1text);
+
+    // header.innerHTML = 'CY Big Company';
+    document.body.appendChild(header);  //document有個成員是body
+                                        //而將body新增一個屬性header
+                                        //appendChild不會擁有(has-a)，只是儲存在階層中
+
+    let hr = document.createElement('hr');
+    document.body.appendChild(hr);
+
+    let ul = document.createElement('ul');
+    let li = document.createElement('li');
+
+    document.body.appendChild(ul);
+    let ritem;   //宣告區域變數
+    for(let i = 0; i<4; i++){
+        let item = document.createElement('li');
+        item.innerHTML = `第${i+1}個項目`;
+        ul.appendChild(item);
+
+        if(i==2) ritem = item;  //區域變數存要移除的項目
+    }
+    ul.removeChild(ritem);  //用removeChild移除掉它
+
+
+    let hr2 = hr.cloneNode();  //cloneNode:複製物件的基礎屬性
+    document.body.appendChild(hr2);  //又畫了一條<hr>的線
+
+    let ul2 = ul.cloneNode();  //cloneNode方法有極限，沒辦法全部複製
+    document.body.appendChild(ul2);
+</script>
+

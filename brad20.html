@@ -1,0 +1,62 @@
+<!-- 學習JavaScript物件導向 
+    物件重要的功能是屬性 ;功能function的目的是改變/影響屬性
+    物件 has-a member(成員)，而成員包含屬性(變數)和方法(function)
+    物件也可以擁有其他物件，has-a object -->
+<script>
+    let bike = new Object();  //宣告物件變數
+    document.write(typeof(bike) + "<br>");
+
+    bike.speed = 0; //用.定義bike的member(屬性)
+    bike.gear = 1;
+
+    bike.upSpeed = function(){  //屬性也可以放函式
+        this.speed =  this.speed < 1 ? 1 : this.speed*this.gear*1.2;
+        //用this指這個(本)類別的物件實體
+    }
+    bike.downSpeed = function(){
+        this.speed = this.speed < 1 ? 0 : this.speed*0.7;
+    }
+
+    bike.upSpeed();
+    bike.upSpeed();
+    bike.upSpeed();
+    bike.upSpeed();
+    bike.downSpeed();
+    document.write(bike.speed + "<hr>");
+</script>
+
+<script>
+    let bike2 = {       //{}也是宣告物件的方法
+        speed : 0,      //屬性 : 值,  (用逗號隔開)
+        gear : 1,
+        upSpeed : function(){
+            this.speed =  this.speed < 1 ? 1 : this.speed*this.gear*1.2;
+        },
+        downSpeed : function(){
+            this.speed = this.speed < 1 ? 0 : this.speed*0.7;
+        }
+    };   
+
+    let method = 'upSpeed';
+    bike2['upSpeed']();   //用陣列的方式呼叫member。等於bike2.upSpeed();
+    bike2[method]();      //用變數去呼叫方法(函式)。等於bike2.upSpeed();
+    bike2.downSpeed();
+    document.write(bike2.speed + "<hr>");
+
+    for(let key in bike2){  //用尋訪陣列的方式尋訪物件的所有成員!
+        document.write(key + " : " + bike2[key] + "<br>");
+    }
+
+    document.write("<hr>");
+</script>
+    
+<script>
+    //尋訪JavaScript內建的物件
+    //https://www.w3schools.com/jsref/default.asp  有其他內建的物件
+    // for(let key in document){
+    //     document.write(key + " : " + document[key] + "<br>");
+    // }
+    for(let key in window){
+        document.write(key + " : " + window[key] + "<br>");
+    }
+</script>

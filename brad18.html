@@ -1,0 +1,24 @@
+<!-- 如何控制時間 -->
+<script>
+    let timeout = null;
+    function test1(){
+        timeout = setTimeout(test2,3*1000);  //setTimeout以千分之一秒計算，
+        //放兩個參數，前面放要執行的動作，後面放多久時間後執行
+        //只做一次的三秒後，所以短時間一直狂按，會在三秒後瘋狂輸出
+    }
+    function test2(){
+        document.getElementById('here').innerHTML = parseInt(Math.random()*49+1);
+    }
+    function test3(){    //如何取消setTimeout
+        console.log("Click2");
+        if(timeout != null){
+            console.log("timeout");
+            clearTimeout(timeout);
+            document.getElementById('here').innerHTML = 'nothing';
+        }
+    }
+</script>
+<input type="button" value="Click1" onclick="test1()" />
+<input type="button" value="Click2" onclick="test3()" />
+<hr>
+<div id="here"></div>

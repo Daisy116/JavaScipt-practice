@@ -1,0 +1,29 @@
+<!-- 用JavaScript寫出99乘法表 -->
+<script>
+    let body = document.createElement('body');
+    document.body = body; 
+
+    let hr = document.createElement('hr');
+
+    let table = document.createElement('table');
+    table.setAttribute('border','1');  //setAttribute，設定table的屬性:border、width
+    table.setAttribute('width','100%');
+    document.body.appendChild(table);
+
+    for(let k = 0;k<2;k++){ 
+        let tr = document.createElement('tr');
+        table.appendChild(tr);
+
+        for(let i = 2;i <= 5;i++){  //這層迴圈用來產生td，i從2開始數99乘法表，i<=5是為了跑4個td
+            let td = document.createElement('td');
+            tr.appendChild(td);
+
+            let newi = i + k*4;    //計算下一列是數字幾開頭，因為每一列上下相差4
+            for(let j = 1; j <= 9; j++){
+                td.innerHTML += `${newi} x ${j} = ${newi*j}<br>`
+            }
+        }
+    }
+</script>
+    
+    
