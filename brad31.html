@@ -1,0 +1,69 @@
+<script>
+    let bike = {    //宣告物件，不是建構式!!
+        a : 11,
+        b : 22,
+        m1 : function(){
+            document.write("bike:m1():" + this.a + "<br>");
+        }
+    }
+
+    let person = {
+        name : 'nobody',
+        mybike : Object.create(bike)    //person物件擁有bike物件!
+    }
+
+    let b1 = Object.create(bike);      //Object.create()，創造物件實體
+    for(let key in b1){
+        document.write(key + ":" + b1[key] + "<br>");
+    }
+
+    document.write("<hr>");
+
+    let b2 = bike.constructor();      //bike沒定義建構式的話，等同於new Objrct();
+    document.write(typeof(b2) + "<br>");
+    for(let key in b2){
+        document.write(key + ":" + b2[key] + "<br>");
+    }
+
+    document.write("<hr>");
+
+    let b3 = clone(bike);
+    for(let key in b3){
+        document.write(key + ":" + b3[key] + "<br>");
+    }
+
+    document.write("<hr>");
+
+    let p1 = Object.create(person);
+    p1.name = 'Brad';
+    p1.mybike.a = 33;   //針對p1的bike的a值做設定(給新值)
+    document.write(p1.name + ":" + p1.mybike.a + "<br>");
+
+    document.write("<hr>");
+
+    let p2 = clone(person);     //clone和Object.create的效果一樣
+    p2.name = 'Peter';
+    p2.mybike.a = 44;   //針對p1的bike的a值做設定(給新值)
+    document.write(p2.name + ":" + p2.mybike.a + "<br>"); 
+    
+    document.write("<hr>");
+
+    p1.mybike.m1();    //呼叫bike的m1方法
+    p2.mybike.m1();
+
+
+
+    function clone(source){     //可以參考https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+        if(source == null || typeof(source) != 'object') return null;
+        let target = new Object();
+        for(let attr in source){
+            if(typeof(source[attr]) != 'object'){
+                target[attr] = source[attr];         //如果source沒有物件的成員
+            }else{                                   //如果有物件的成員
+                target[attr] = clone(source[attr]);  //clone內呼叫clone -> 遞迴呼叫
+            }
+            
+        }
+        return target;
+    }
+</script>

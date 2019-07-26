@@ -1,0 +1,35 @@
+<script>
+    //javascript沒有繼承，是用prototype產生繼承的效果
+    let f = function(){    
+        this.a = 1;        //;是function的語法
+        this.b = 2;
+    }
+
+    let obj = new f();     //function也可以是物件，new在記憶體裡宣告一個空間，f()在做初始化
+    document.write(typeof(obj) + "<br>");
+    document.write(obj.a + ":" + obj.b + "<br>");
+
+    f.prototype.b = 3;    //prototype不會修改到f()的值
+    f.prototype.c = 4;    //prototype會新增f()原本沒有的值
+    document.write(obj.a + ":" + obj.b +  ":" + obj.c);
+</script>
+
+<script>
+    let bike = function(){    //bike為constructor建構式
+        console.log("constructor!");
+        this.a = 12;
+        this.b = 34;
+    }
+
+    let b1 = new bike();     //b1為bike的物件實體
+    bike.prototype.x = 111;
+    console.log(b1.x);      //b1會被bike影響
+
+    bike.prototype.b = 222;
+    console.log(b1.b);      //b1還是原來的值32
+
+    let b2 = new bike();
+    b2.a = 56;
+    b2.c = 78;
+    console.log("b2為" + b2.a + " " + b2.b + " " + b2.c + " " + b2.x);   //結果為56 34 78 111
+</script>

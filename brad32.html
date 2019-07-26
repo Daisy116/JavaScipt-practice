@@ -1,0 +1,32 @@
+<script>
+let bike = function(name, speed){  //建構式，設定初值   
+    this.name = name;
+    this.speed = speed;
+    this.chSpeed = function(speed){
+        document.write("debug4 here" + "<hr>");
+    }
+}
+
+// bike.chSpeed = function(speed){   //chSpeed功能為改變speed
+//     this.speed = speed;
+//     document.write("debug3 here" + "<hr>");
+// }
+
+ 
+// bike.prototype.chSpeed = function(speed){  //prototype讓bike的實體也可以用chSpeed方法
+//     this.speed = speed;
+//     document.write("debug1 here" + "<hr>");
+// }
+
+let b1 = new bike('brad', 12);
+b1.chSpeed = function(speed){
+    document.write("debug2 here" + "<hr>");
+}
+for(let key in b1){
+    // document.write(key + ":" + b1[key] + "<br>");
+}
+b1.chSpeed(23);   //自己有定義(b1.chSpeed)，用自己的(產生debug2 here);自己沒定義，用prototype的方法(產生debug1 here)
+for(let key in b1){
+    // document.write(key + ":" + b1[key] + "<br>");
+}
+</script>

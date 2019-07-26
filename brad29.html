@@ -1,0 +1,124 @@
+<!-- 做動畫時，動的物體和靜的物體碰撞時，偵測距離的程式是寫在動的物體身上
+如果兩個會動的物體碰撞，則兩個物體都要寫偵測程式 -->
+<!-- 因為瀏覽器的支援度，所以雖然有HTML6出現，但還是盡量用HTML5 -->
+<h1 id="head"></h1>
+<hr>
+<canvas id="canvas" width="480" height="320"
+    style="border: 1px solid black"></canvas>
+
+<script>
+    head.innerHTML = "CY Company";
+    let ctx = canvas.getContext('2d');  //2d為渲染
+    let bg = new Image();
+    bg.src = 'bg.jfif';    
+    let ball1 = new Image();
+    let ball2 = new Image();
+    let ball3 = new Image();
+    ball1.src = 'ball1.gif';
+    ball2.src = 'ball2.gif';
+    ball3.src = 'ball3.gif';
+    let ballImag = [ball1, ball2, ball3];  //用陣列來存放這三顆球
+    let balls = [];   //當使用者點一次畫布，產生的一顆球存在這裡
+
+    let ballObj = {   //將球設成物件
+        x : 0,
+        y : 0,
+        dx : 8,  //dx為x軸的位移量
+        dy : 8,
+        img : 0  //選擇哪張球的圖片
+    };
+
+    //只有一顆球的版本
+    // let ballx = -100;
+    // let bally = -100;
+    // let dx = 8, dy = 8;
+
+
+    bg.onload = function(){
+        ctx.drawImage(bg, 0, 0); //將圖片呈現出，在x,y座標上
+    }
+
+
+    canvas.onmousedown = function(e){
+        let ball = clone(ballObj);  //用clone複製球的物件，也可以用New Object的方式;這個是區域變數!!!
+        ball.x = e.offsetX-35;
+        ball.y = e.offsetY-32;
+
+        ball.dx = parseInt(Math.random()*17 -8);   //控制球做不同的速度
+        ball.dy = parseInt(Math.random()*17 -8);
+
+        ball.img = parseInt(Math.random()*ballImag.length);  //亂數選擇要用哪張圖
+        balls.push(ball);   //將區域變數存到全域變數(的陣列)中
+    }
+
+    function refreshView(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(bg, 0, 0);  //要有背景
+
+        for(let ball of balls){   //用of不會有undefined
+            ctx.drawImage(ballImag[ball.img], ball.x, ball.y);
+        }
+    }
+    setInterval(refreshView, 17);
+
+    function moveBall(obj){   //針對物件參數做移動
+        if(obj.x < 0 || obj.x+70 > canvas.width){
+            obj.dx *= -1;
+        }
+        if(obj.y < 0 || obj.y+65 > canvas.height){
+            obj.dy *= -1;
+        }
+        obj.x += obj.dx;
+        obj.y += obj.dy;
+    }
+    
+    function go(){           //視目前有多少顆球，操控所有的球移動
+        for(let ball of balls){
+            moveBall(ball);
+        }
+    }
+    setInterval(go, 30);
+
+
+
+    // 物件複製(clone)常用!
+    function clone(source){     //可以參考https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+        if(source == null || typeof(source) != 'object') return null;
+        let target = new Object();
+        for(let attr in source){
+            if(typeof(source[attr]) != 'object'){
+                target[attr] = source[attr];         //如果source沒有物件的成員
+            }else{                                   //如果有物件的成員
+                target[attr] = clone(source[attr]);  //clone內呼叫clone -> 遞迴呼叫
+            }
+            
+        }
+        return target;
+    }
+
+
+
+    //只有一顆球的版本
+    // canvas.onmousedown = function(e){  //當滑鼠點下去時改球出現的位置      
+    //     ballx = e.offsetX-64;  //減的數字是為了點下去時，圖片出現在滑鼠中心
+    //     bally = e.offsetY-64;
+    // }
+    //以下是只有一顆球的版本
+    // function refreshView(){  //刷新畫布(畫面)，每秒使用者看到的畫面
+    //     ctx.clearRect(0,0,canvas.width,canvas.height);  //清空畫布，不然會一直疊加上去
+    //     ctx.drawImage(bg, 0, 0);  //要有背景
+    //     ctx.drawImage(ball, ballx, bally);  
+    // }
+    // setInterval(refreshView, 17);  //fps = 60/1000 = 0.17，每0.17秒做refreshView   
+    // function moveBall(){  //決定球移動的距離
+    //     if(ballx < 0 || ballx + 55 > canvas.width){    //如果碰到左右兩邊的牆壁
+    //         dx *= -1;
+    //     }
+    //     if(bally < 0 || bally + 62 > canvas.height){   //如果碰到上下兩邊的牆壁
+    //         dy *= -1;
+    //     }
+    //     ballx += dx;   //ballx在圖片的左上角
+    //     bally += dy;   //bally也在圖片的左上角
+    // }
+    // setInterval(moveBall, 30);  //決定球移動的時間，可以不和refreshView一樣
+</script>

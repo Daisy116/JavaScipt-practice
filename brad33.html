@@ -1,0 +1,31 @@
+<script>
+// setInterval(() => {  //可將週期重複的事寫在{}中，getMonth要加1 !!
+//     let time = new Date();
+//     let timeString = time.getFullYear() + "-" +
+//         (time.getMonth()+1) + "-" + time.getDate();
+//     now.innerHTML = timeString;
+// }, 100);    //0.1秒後才做
+
+setInterval(() => {  //可將週期重複的事寫在{}中，getMonth要加1 !!
+    let time = new Date();
+    let timeString = time.getTWYear() + "-" +
+        (time.getMonth()+1) + "-" + time.getDate() + ":" + time.getSeconds() + time.getCweek();
+    now.innerHTML = timeString;
+}, 100);
+
+
+//用prototype擴充Date()的功能，多增加一些的功能
+Date.prototype.getTWYear = function(){    //將西元幾年轉成民國幾年
+    return this.getFullYear() - 1911;     //呼叫this.，才有getFullYear的方法
+}
+Date.prototype.getTWMonth = function(){   //將西方的月份+1
+    return this.getFullYear() +1;
+}
+Date.prototype.getCweek = function(){     //將getDay return的0~6數字轉成中文
+    let w =  this.getDay();
+    let ws = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    return ws[w];
+}
+</script>
+
+目前日期時間: <span id="now"></span>

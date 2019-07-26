@@ -1,0 +1,35 @@
+<!-- Google chart : Googel好用的API，全用JavaScript寫的 -->
+<!-- source : https://google-developers.appspot.com/chart/interactive/docs/gallery/piechart -->
+<!-- 可以拿第三方的範本，加上客戶的要求(自己改) -->
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);  //Callback回呼函數;OnLoad載入圖
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],  //11,2...都是原始數據，呈現是用百分比
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

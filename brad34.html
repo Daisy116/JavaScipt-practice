@@ -1,0 +1,47 @@
+<script>
+let person = {
+    name : 'Brad',
+    age : 18,
+    weight : 100,
+    bike : [{      //用陣列存放，陣列元素又是物件
+        brand : 'giant',
+        speed : 10 
+    },{
+        brand : 'ubike',
+        speed : 20         
+    }],  
+    eat : function(){
+        document.write(this.name + " is eating...");
+    }
+}
+
+let strJSON = JSON.stringify(person);   //JSON.stringify()轉成JSON格式的字串化
+document.write(strJSON + "<hr>");
+
+let person2 = JSON.parse(strJSON);      //parse()解析，將字串轉回物件
+for(let key in person2){
+    document.write(key + ":" + person2[key] + "<br>");
+}
+
+person.eat.call(person2);
+document.write("<hr>");
+
+let person3 = clone(person);    //clone連eat()方法也有複製到
+person3.eat();
+
+
+
+function clone(source){     //可以參考https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object
+    if(source == null || typeof(source) != 'object') return null;
+    let target = new Object();
+    for(let attr in source){
+        if(typeof(source[attr]) != 'object'){
+            target[attr] = source[attr];         //如果source沒有物件的成員
+        }else{                                   //如果有物件的成員
+            target[attr] = clone(source[attr]);  //clone內呼叫clone -> 遞迴呼叫
+        }
+        
+    }
+    return target;
+}
+</script>

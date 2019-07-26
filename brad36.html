@@ -1,0 +1,63 @@
+<script>   //HTML6的寫法，有些瀏覽器不支援
+class Bike {   //類別方法vs物件方法，前者不需有實體就可呼叫
+    constructor(speed){
+        this.speed = speed;
+        this.name = 'Brad';
+        document.write("Bike的speed: " + this.speed + "<br>");
+    }
+    upSpeed(){
+        document.write("Bike的upSpeed()<br>");
+    }
+    static m1(){     //static宣告的方法，不需要new實體即可呼叫，寫在Bike中只是為了分類
+        //所以可以寫一個class，裡面全部寫static的方法
+        //不能涉及與物件相關的操作!!例如: this.speed
+        document.write("Bike的m1()<br>");
+    }
+}
+
+class Scooter extends Bike{    //extends繼承，如果沒寫自己的建構式，會呼叫父類別的建構式
+    constructor(speed,gear){   //Scooter的建構式
+        document.write("Scooter的constructor<br>");
+        super(speed);          //建構式要先呼叫super的建構式，不然無法執行this.
+        this.speed = speed;
+        this.gear = gear;
+    }
+    chGear(gear){
+        document.write("Scooter的chGear()<br>");
+        this.gear = gear;
+    }
+    upSpeed(){            //改寫(override)父類別的upSpeed
+        super.upSpeed();  //先呼叫父類別的方法  super.
+        document.write("This is Scooter's upSpeed()");  //再自己改寫，做改良的部分
+    }
+}
+
+class Brad {
+    constructor(...x){   //...代表可以0或多個參數
+        document.write("Brad()<br>")
+    }
+}
+let b1 = new Bike(123);
+b1.upSpeed();
+document.write("<hr>");
+
+let s1 = new Scooter(234,1);
+s1.upSpeed();
+s1.chGear(4);
+document.write("<hr>");
+
+document.write(b1 instanceof Bike);  //b1是bike
+document.write("<br>");
+document.write(s1 instanceof Bike);  //s1也是bike，因為Scooter繼承了Bike  (多型的概念)
+document.write("<br>");
+document.write(b1 instanceof Scooter);   //b1不是Scooter
+document.write("<hr>");
+
+let r1 = new Brad(123);
+let r2 = new Brad();
+let r3 = new Brad(123,567);
+
+
+Bike.m1();
+Scooter.m1();   //因為繼承的關係，所以擁有static m1()的方法
+</script>

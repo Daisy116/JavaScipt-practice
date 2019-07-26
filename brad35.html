@@ -1,0 +1,32 @@
+<script>
+//解析JSON格式，將字串轉成物件格式
+//資料來源: https://data.coa.gov.tw/Query/ServiceDetail.aspx?id=B58
+let strJSON = `[{
+    "title": " La one Kitchen & Bakery",
+    "link": "https://tapinfo.coa.gov.tw/work/tapinfo.php?func=where_eat&id=19",
+    "description": " 手工冰淇淋－雞蛋／\r\n水果優格法式吐司－雞蛋／\r\n奶油培根義大利麵－雞蛋／\r\n法式功夫櫻桃鴨腿－鴨肉／\r\n歐式麵包籃－雞蛋／\r\n墨魚麵－雞蛋／\r\n蘋果雞肉凱薩沙拉－雞蛋 ",
+    "location": " 南部 ",
+    "author": "2.16.886.101.20003.20024",
+    "pubDate": "Wed, 30 Dec 2015 03:07:25 GMT",
+    "cDate": "2018-08-09T21:30:00.407"
+  },
+  {
+    "title": " 冠月精品旅館義思餐廳",
+    "link": "https://tapinfo.coa.gov.tw/work/tapinfo.php?func=where_eat&id=250",
+    "description": " 有血色但好吃鴨胸餐－鴨肉 ",
+    "location": " 中部 ",
+    "author": "2.16.886.101.20003.20024",
+    "pubDate": "Mon, 28 Nov 2016 03:43:43 GMT",
+    "cDate": "2018-08-09T21:30:00.407"
+  }]`;      //字串外面要加\‵ \‵
+
+document.write(strJSON + "<hr>");
+
+strJSON = strJSON.replace(/\r\n/g, '')    //replace置換字串，將//中的字置換成''
+
+let data = JSON.parse(strJSON);    //JSON.parse()解析json格式。\r\n無法被解析!!
+document.write(typeof(data) + data.length + "<hr>");
+for(let row of data){
+    document.write(row.title + "<br>" + row.location + "<hr>");
+}    //data[row].title = row.title ，前者用in data;後者用of data;
+</script>
