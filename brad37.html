@@ -1,0 +1,39 @@
+<!-- https://www.w3schools.com/js/js_ajax_http.asp   學習AJAX
+https://pdfmyurl.com/  將網頁轉成pdf檔
+ 檔案放在C:\xampp\htdocs中 -->
+ 
+<script>
+let xhttp = new XMLHttpRequest();
+
+function test1(){
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            state1.innerHTML = this.responseText;
+        }
+        // switch(xhttp.readyState){   //可以用這種方式做出網頁的進度條(看loading的程度)
+        //     case 1:
+        //         state1.innerHTML = 'OK';break;
+        //     case 2:
+        //         state2.innerHTML = 'OK';break;  
+        //     case 3:
+        //         state3.innerHTML = 'OK';break;
+        //     case 4:
+        //         state4.innerHTML = 'OK:' + this.status;break;          
+        // }
+    };
+    xhttp.open("Get", "brad01.php", true);   //true代表非同步，false才是同步
+    xhttp.send();    
+}
+
+
+
+</script>
+<input type="button" value="test1" onclick="test1()" />
+<div id="state1"></div>
+<div id="state2"></div>
+<div id="state3"></div>
+<div id="state4"></div>
+<!-- <form method="POST" action="brad01.php">
+    <input type="file" name="upload" />
+    <input type="submit" value="Upload" />
+</form> -->
