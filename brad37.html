@@ -1,8 +1,6 @@
-<!-- https://www.w3schools.com/js/js_ajax_http.asp   學習AJAX
-https://pdfmyurl.com/  將網頁轉成pdf檔
- 檔案放在C:\xampp\htdocs中 -->
- 
 <script>
+//https://www.w3schools.com/js/js_ajax_http.asp   學習AJAX
+//https://pdfmyurl.com/  將網頁轉成pdf檔
 let xhttp = new XMLHttpRequest();
 
 function test1(){
@@ -21,7 +19,7 @@ function test1(){
         //         state4.innerHTML = 'OK:' + this.status;break;          
         // }
     };
-    xhttp.open("Get", "brad01.php", true);   //true代表非同步，false才是同步
+    xhttp.open("Get", "C://xampp//htdocs//brad01.php", true);   //true代表非同步，false才是同步
     xhttp.send();    
 }
 
